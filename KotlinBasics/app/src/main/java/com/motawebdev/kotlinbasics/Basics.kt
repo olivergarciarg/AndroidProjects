@@ -1,6 +1,24 @@
 package com.motawebdev.kotlinbasics
 
+data class CoffeeDetails(
+    val name: String,
+    val sugarCount: Int,
+    val size: String,
+    val creamAmount: Int
+) {
+    fun makeCoffee() {
+        if (sugarCount == 0) {
+            println("Coffee with no sugar for $name")
+        } else if (sugarCount == 1) {
+            println("Coffee with $sugarCount spoon of sugar for $name")
+        } else {
+            println("Coffee with $sugarCount spoons of sugar for $name")
+        }
+    }
+}
 fun main() {
+    val coffeeForDenis = CoffeeDetails("Denis", 2, "Large", 3)
+    makeCoffee(coffeeForDenis)
 //    val number1 = 1
 //
 //    var myAge: Byte = 35
@@ -71,11 +89,11 @@ fun main() {
 ////    var myResult = add(num1, num2)
 //    var myResult = divide(num1, num2)
 //    println("The result is $myResult")
-    var daisy = Dog("Daisy", "Golden Retriever", 1)
-    println("${daisy.name} is a ${daisy.breed} and is ${daisy.age} years old")
-    println("A year has passed")
-    daisy.age = 2
-    println("${daisy.name} is a ${daisy.breed} and is ${daisy.age} years old")
+//    var daisy = Dog("Daisy", "Golden Retriever", 1)
+//    println("${daisy.name} is a ${daisy.breed} and is ${daisy.age} years old")
+//    println("A year has passed")
+//    daisy.age = 2
+//    println("${daisy.name} is a ${daisy.breed} and is ${daisy.age} years old")
 }
 
 fun divide(num1: Int, num2: Int): Double {
@@ -91,16 +109,34 @@ fun askCoffeeDetails() {
     var name = readln()
     println("How many sugars do you want?")
     val sugarCount = readln().toInt()
-    makeCoffee(sugarCount, name)
+    makeCoffeeV1(sugarCount, name)
 }
 
-fun makeCoffee(sugarCount: Int, name: String) {
+fun makeCoffeeV1(sugarCount: Int, name: String) {
     if (sugarCount == 0) {
         println("Coffee with no sugar for $name")
     } else if (sugarCount == 1) {
         println("Coffee with $sugarCount spoon of sugar for $name")
     } else {
         println("Coffee with $sugarCount spoons of sugar for $name")
+    }
+//    println("Buy beans")
+//    println("Grind beans")
+//    println("Boil water")
+//    println("Mix water and coffee grinds")
+//    println("Pour coffee in cup")
+//    println("Add sugar and milk")
+//    println("Stir")
+//    println("Drink")
+}
+
+fun makeCoffee(coffeeDetails: CoffeeDetails) {
+    if (coffeeDetails.sugarCount == 0) {
+        println("Coffee with no sugar for ${coffeeDetails.name}")
+    } else if (coffeeDetails.sugarCount == 1) {
+        println("Coffee with ${coffeeDetails.sugarCount} spoon of sugar for ${coffeeDetails.name}")
+    } else {
+        println("Coffee with ${coffeeDetails.sugarCount} spoons of sugar for ${coffeeDetails.name}")
     }
 //    println("Buy beans")
 //    println("Grind beans")

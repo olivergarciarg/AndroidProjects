@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    namespace = "com.motawebdev.kotlinbasics"
-    compileSdk = 35 // 34
+    namespace = "com.motawebdev.bankaccountprogram"
+    compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.motawebdev.kotlinbasics"
-        minSdk = 35
-        targetSdk = 35 // 34
+        applicationId = "com.motawebdev.bankaccountprogram"
+        minSdk = 24
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -20,7 +20,10 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     compileOptions {
@@ -35,8 +38,8 @@ android {
 dependencies {
 
     implementation("androidx.core:core-ktx:1.15.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
+    implementation("androidx.appcompat:appcompat:1.7.0")
+    implementation("com.google.android.material:material:1.12.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
