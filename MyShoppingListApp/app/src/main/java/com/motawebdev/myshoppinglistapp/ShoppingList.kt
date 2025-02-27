@@ -17,7 +17,6 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -29,10 +28,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.material3.AlertDialog as AlertDialog1
 
 data class ShoppingItem(
     val id: Int,
@@ -68,12 +67,9 @@ fun ShoppingListApp() {
                     ShoppingItemEditor(
                         item = item,
                         onEditComplete = { editedName, editedQuantity ->
+                            item.name=editedName
+                            item.quantity=editedQuantity
                             shoppingItems = shoppingItems.map{ it.copy(isEditing = false) }
-                            val editedItem = shoppingItems.find { it.id == item.id }
-                            editedItem?.let {
-                                it.name = editedName
-                                it.quantity = editedQuantity
-                            }
                         }
                     )
                 } else {
@@ -83,7 +79,7 @@ fun ShoppingListApp() {
                             shoppingItems = shoppingItems.map { it.copy(isEditing = it.id == item.id) }
                         },
                         onDeleteClick = {
-                            shoppingItems = (shoppingItems - item) as SnapshotStateList<ShoppingItem>
+                            shoppingItems = shoppingItems - item
                         }
                     )
                 }
@@ -91,7 +87,7 @@ fun ShoppingListApp() {
         }
     }
     if (showDialog) {
-        AlertDialog(
+        AlertDialog1(
             onDismissRequest = { showDialog = false },
             confirmButton = {
                 Row(
@@ -108,6 +104,7 @@ fun ShoppingListApp() {
                                 quantity = itemQuantity.toInt()
                             )
                             shoppingItems = shoppingItems + newItem
+//                            shoppingItems.add(newItem)
                             showDialog = false
                             itemName = ""
                             itemQuantity = ""
