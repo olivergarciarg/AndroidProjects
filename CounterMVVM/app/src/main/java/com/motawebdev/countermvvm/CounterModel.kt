@@ -3,17 +3,17 @@ package com.motawebdev.countermvvm
 data class CounterModel(var count: Int)
 
 class CounterRepository {
-    private var counter = CounterModel(0)
+    private var _counter = CounterModel(0)
 
     fun getCounter(): CounterModel {
-        return counter
+        return _counter
     }
 
     fun increment() {
-        counter.count++
+        _counter.count++
     }
 
     fun decrement() {
-        counter.count--
+        _counter.count--
     }
 }
