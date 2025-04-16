@@ -26,12 +26,12 @@ fun main() {
 //        }
 //    }
 
-    for (item in 0 until shoppingList.size) {
-        println(shoppingList[item])
-        if (shoppingList[item] == "RAM") {
-            shoppingList.removeAt(shoppingList.lastIndex)
-            break
-        }
-    }
-    println(shoppingList)
+//    for (item in 0 until shoppingList.size) {
+//        println(shoppingList[item])
+//        if (shoppingList[item] == "RAM") {
+//            shoppingList.removeAt(shoppingList.lastIndex)
+//            break
+//        }
+//    }
+//    println(shoppingList)
 }

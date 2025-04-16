@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.motawebdev.myrecipeapp"
+    namespace = "com.motawebdev.myrecipeapp2"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.motawebdev.myrecipeapp"
+        applicationId = "com.motawebdev.myrecipeapp2"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
@@ -50,15 +50,6 @@ android {
 }
 
 dependencies {
-
-    // Compose ViewModel 2.8.7
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
-    // Network calls 2.10.0
-    implementation("com.squareup.retrofit2:retrofit:2.10.0")
-    // Json to Kotlin object mapping 2.10.0
-    implementation("com.squareup.retrofit2:converter-gson:2.10.0")
-    // Image loading
-    implementation("io.coil-kt:coil-compose:2.5.0")
 
     implementation("androidx.core:core-ktx:1.15.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")

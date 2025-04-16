@@ -1,4 +1,4 @@
-package com.motawebdev.myrecipeapp
+package com.motawebdev.myrecipeapp2
 
 data class Category(val idCategory:String,
                     val strCategory: String,
