@@ -9,12 +9,18 @@ import java.lang.Exception
 
 class MainViewModel : ViewModel() {
 
+    data class RecipeState(
+        val loading: Boolean = true,
+        val list: List<Category> = emptyList(),
+        val error: String? = null
+    )
+
     private val _categorieState = mutableStateOf(RecipeState())
-//    val categoriesState: State<RecipeState> = _categorieState
+    val categoriesState: State<RecipeState> = _categorieState
 
     init {
-//        fetchCategories()
-        fillWithDummyData()
+        fetchCategories()
+//        fillWithDummyData()
     }
 
     fun fillWithDummyData() {
@@ -39,29 +45,26 @@ class MainViewModel : ViewModel() {
     }
 
 
-//    private fun fetchCategories(){
-//        viewModelScope.launch {
-//            try {
-//                val response = recipeService.getCategories()
-//                _categorieState.value = _categorieState.value.copy(
-//                    list = response.categories,
-//                    loading = false,
-//                    error = null
-//                )
-//
-//            }catch (e: Exception){
-//                _categorieState.value = _categorieState.value.copy(
-//                    loading = false,
-//                    error = "Error fetching Categories ${e.message}"
-//                )
-//            }
-//        }
-//    }
+    private fun fetchCategories(){
+        viewModelScope.launch {
+            try {
+//                val recipeService = createApiService()
+                val response = recipeService.getCategories()
+                _categorieState.value = _categorieState.value.copy(
+                    list = response.categories,
+                    loading = false,
+                    error = null
+                )
 
-    data class RecipeState(
-        val loading: Boolean = true,
-        val list: List<Category> = emptyList(),
-        val error: String? = null
-    )
+            } catch (e: Exception){
+                _categorieState.value = _categorieState.value.copy(
+                    loading = false,
+                    error = "Error fetching Categories ${e.message}"
+                )
+            }
+        }
+    }
+
+
 
 }

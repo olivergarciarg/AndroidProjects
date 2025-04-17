@@ -1,4 +1,4 @@
-package com.motawebdev.myrecipeapp2
+package com.motawebdev.myrecipeapp3
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,21 +10,37 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.motawebdev.myrecipeapp2.ui.theme.MyRecipeApp2Theme
+import com.motawebdev.myrecipeapp3.ui.theme.MyRecipeApp3Theme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyRecipeApp2Theme {
+            MyRecipeApp3Theme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    RecipeScreen()
+                    Greeting("Android")
                 }
             }
         }
+    }
+}
+
+@Composable
+fun Greeting(name: String, modifier: Modifier = Modifier) {
+    Text(
+        text = "Hello $name!",
+        modifier = modifier
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+    MyRecipeApp3Theme {
+        Greeting("Android")
     }
 }
